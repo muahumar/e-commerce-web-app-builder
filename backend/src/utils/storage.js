@@ -2,7 +2,9 @@ const fs = require('fs/promises');
 const path = require('path');
 const crypto = require('crypto');
 
-const UPLOAD_ROOT = path.join(__dirname, '..', '..', 'uploads');
+const UPLOAD_ROOT = process.env.VERCEL
+  ? path.join('/tmp', 'uploads')
+  : path.join(__dirname, '..', '..', 'uploads');
 const EXT = { 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp', 'image/gif': '.gif' };
 
 /**
