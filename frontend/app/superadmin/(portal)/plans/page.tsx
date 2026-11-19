@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { saFetch, type Features, type Plan } from "@/lib/sa";
+import { money } from "@/lib/storefront";
 
 const FEATURE_LABELS: [keyof Features, string][] = [
   ["discountBadge", "Discount badges"],
@@ -63,7 +64,7 @@ export default function PlansPage() {
         <label className="text-xs font-semibold text-slate-600">Plan Name<input className={input} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required /></label>
         <label className="text-xs font-semibold text-slate-600">Max Products<input className={input} type="number" min={0} {...num("maxProducts")} /></label>
         <label className="text-xs font-semibold text-slate-600">Max Admins<input className={input} type="number" min={1} {...num("maxAdmins")} /></label>
-        <label className="text-xs font-semibold text-slate-600">Price / month ($)<input className={input} type="number" min={0} {...num("priceMonthly")} /></label>
+        <label className="text-xs font-semibold text-slate-600">Price / month (PKR)<input className={input} type="number" min={0} {...num("priceMonthly")} /></label>
         <label className="text-xs font-semibold text-slate-600">Commission (%)<input className={input} type="number" min={0} max={100} {...num("commissionPercent")} /></label>
         <div className="text-xs font-semibold text-slate-600">
           Allowed Features
@@ -99,7 +100,7 @@ export default function PlansPage() {
                 <td className="px-6 py-3.5 font-semibold text-slate-900">{p.name}</td>
                 <td className="px-4 py-3.5 text-slate-600">{p.maxProducts}</td>
                 <td className="px-4 py-3.5 text-slate-600">{p.maxAdmins}</td>
-                <td className="px-4 py-3.5 font-medium text-slate-900">${p.priceMonthly}</td>
+                <td className="px-4 py-3.5 font-medium text-slate-900">{money(p.priceMonthly)}</td>
                 <td className="px-4 py-3.5 text-slate-600">{p.commissionPercent}%</td>
                 <td className="px-4 py-3.5 text-xs text-slate-600">{FEATURE_LABELS.filter(([k]) => p.allowedFeatures[k]).map(([, l]) => l).join(", ") || "—"}</td>
                 <td className="px-4 py-3.5 text-slate-600">{p.tenantCount}</td>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { saFetch } from "@/lib/sa";
+import { money } from "@/lib/storefront";
 
 type Row = { tenantId: string; businessName: string; subdomain: string; status: string; plan: string | null; products: number; orders: number; revenue: number; commission: number };
 type Analytics = {
@@ -12,8 +13,6 @@ type Analytics = {
   totalCommission: number;
   perTenant: Row[];
 };
-
-const money = (n: number) => n.toLocaleString(undefined, { style: "currency", currency: "USD" });
 
 const statusBadge: Record<string, string> = {
   active: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200",

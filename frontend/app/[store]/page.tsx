@@ -60,8 +60,8 @@ export default async function StorefrontHome({ params, searchParams }: { params:
             <option key={c._id} value={c._id}>{c.name}</option>
           ))}
         </select>
-        <input name="minPrice" type="number" min="0" defaultValue={sp.minPrice ?? ""} placeholder="Min $" className="w-24 rounded-xl border border-[#D8C5AA] bg-[#FAF6F0] px-3 py-2 text-sm" />
-        <input name="maxPrice" type="number" min="0" defaultValue={sp.maxPrice ?? ""} placeholder="Max $" className="w-24 rounded-xl border border-[#D8C5AA] bg-[#FAF6F0] px-3 py-2 text-sm" />
+        <input name="minPrice" type="number" min="0" defaultValue={sp.minPrice ?? ""} placeholder="Min PKR" className="w-24 rounded-xl border border-[#D8C5AA] bg-[#FAF6F0] px-3 py-2 text-sm" />
+        <input name="maxPrice" type="number" min="0" defaultValue={sp.maxPrice ?? ""} placeholder="Max PKR" className="w-24 rounded-xl border border-[#D8C5AA] bg-[#FAF6F0] px-3 py-2 text-sm" />
         <select name="sort" defaultValue={sp.sort ?? "newest"} className="rounded-xl border border-[#D8C5AA] bg-[#FAF6F0] px-3 py-2 text-sm">
           <option value="newest">Newest</option>
           <option value="price_asc">Price: Low to High</option>

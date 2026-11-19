@@ -290,7 +290,7 @@ exports.createCheckoutIntent = wrap(async (req, res) => {
   if (stripe && calc.totalAmount > 0) {
     const intent = await stripe.paymentIntents.create({
       amount: amountCents,
-      currency: 'usd',
+      currency: 'pkr',
       automatic_payment_methods: { enabled: true },
       metadata: { tenantId: String(req.tenantId), subdomain: req.tenant.subdomain },
     });
@@ -386,7 +386,7 @@ exports.confirmCheckout = wrap(async (req, res) => {
   await sendMail({
     to: recipient,
     subject: `Order confirmed — ${req.tenant.businessName} (#${String(order._id).slice(-6)})`,
-    text: `Thank you for your order!\nTotal: $${order.totalAmount.toFixed(2)}\nItems:\n${order.items.map((i) => `- ${i.quantity}x ${i.name} ($${i.price})`).join('\n')}`,
+    text: `Thank you for your order!\nTotal: PKR ${order.totalAmount.toFixed(2)}\nItems:\n${order.items.map((i) => `- ${i.quantity}x ${i.name} (PKR ${i.price})`).join('\n')}`,
   });
 
   res.status(201).json({ order });

@@ -63,7 +63,7 @@ export async function sfFetch<T = unknown>(
   return data as T;
 }
 
-export const money = (n: number) => n.toLocaleString(undefined, { style: "currency", currency: "USD" });
+export const money = (n: number) => n.toLocaleString("en-PK", { style: "currency", currency: "PKR" });
 
 export type StoreInfo = {
   businessName: string;

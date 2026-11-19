@@ -73,7 +73,7 @@ export default function ProductsPage() {
             <option value="">No category</option>
             {cats.data?.items.map((c) => <option key={c._id} value={c._id}>{c.name}</option>)}
           </select>
-          <input className={inputCls} type="number" step="0.01" min="0" placeholder="Price ($)" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} required />
+          <input className={inputCls} type="number" step="0.01" min="0" placeholder="Price (PKR)" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} required />
           <input className={inputCls} type="number" min="0" placeholder="Stock quantity" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} />
           <textarea className={`${inputCls} sm:col-span-2`} rows={3} placeholder="Description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           <input className={`${inputCls} sm:col-span-2`} placeholder="Variants, e.g. Size:S,M,L; Color:Red,Blue" value={form.variants} onChange={(e) => setForm({ ...form, variants: e.target.value })} />
